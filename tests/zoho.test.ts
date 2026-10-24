@@ -38,6 +38,9 @@ function fakeZoho() {
 
     if (url.pathname === '/oauth/v2/token') return reply({ access_token: 'tok', expires_in: 3600 })
     if (url.pathname.endsWith('/contacts')) return reply({ code: 0, contacts: zohoState.vendors })
+    if (url.pathname.endsWith('/items') && !url.searchParams.get('sku') && !url.searchParams.get('name')) {
+      return reply({ code: 0, items: Object.values(zohoState.items), page_context: { has_more_page: false } })
+    }
     if (url.pathname.endsWith('/items')) {
       const key = url.searchParams.get('sku') ?? url.searchParams.get('name') ?? ''
       return reply({ code: 0, items: zohoState.items[key] ? [zohoState.items[key]] : [] })
@@ -129,5 +132,34 @@ describe('zoho push', () => {
     const result = await fresh.pushPO(po)
     expect(result.status).toBe('failed')
     expect(result.error).toContain('invalid_client')
+  })
+})
+
+describe('purchase rates', () => {
+  it('reads purchase prices by SKU and ignores items without one', async () => {
+    vi.resetModules()
+    const fresh = await import('../lib/zoho')
+    expect(await fresh.purchaseRates()).toEqual({ SKU001: 12.5 })
+  })
+
+  it('caches for a few minutes, so a second call does not hit Zoho', async () => {
+    vi.resetModules()
+    const fresh = await import('../lib/zoho')
+    await fresh.purchaseRates()
+    const before = calls.length
+    await fresh.purchaseRates()
+    expect(calls.length).toBe(before)
+  })
+
+  it('returns nothing when Zoho is not configured or unreachable', async () => {
+    vi.resetModules()
+    vi.stubGlobal('fetch', async () => {
+      throw new Error('offline')
+    })
+    const fresh = await import('../lib/zoho')
+    expect(await fresh.purchaseRates()).toEqual({})
+    delete process.env.ZOHO_ORG_ID
+    vi.resetModules()
+    expect(await (await import('../lib/zoho')).purchaseRates()).toEqual({})
   })
 })

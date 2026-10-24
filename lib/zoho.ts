@@ -171,3 +171,29 @@ export async function pushPO(po: PO): Promise<ZohoResult> {
     return { status: 'failed', ref: null, error: message.slice(0, 240) }
   }
 }
+
+let rateCache: { at: number; rates: Record<string, number> } | null = null
+
+// Purchase prices from Zoho, keyed by SKU. Cached for five minutes; returns what it has (or nothing) if Zoho is unreachable.
+export async function purchaseRates(): Promise<Record<string, number>> {
+  const cfg = config()
+  if (!cfg) return {}
+  if (rateCache && Date.now() - rateCache.at < 300_000) return rateCache.rates
+  try {
+    const rates: Record<string, number> = {}
+    for (let page = 1; page <= 5; page++) {
+      const data = await zoho<{ items?: ZohoItem[]; page_context?: { has_more_page?: boolean } }>(cfg, 'GET', '/items', {
+        per_page: '200',
+        page: String(page),
+      })
+      for (const item of data.items ?? []) {
+        if (item.sku && item.purchase_rate && item.purchase_rate > 0) rates[item.sku.toUpperCase()] = item.purchase_rate
+      }
+      if (!data.page_context?.has_more_page) break
+    }
+    rateCache = { at: Date.now(), rates }
+    return rates
+  } catch {
+    return rateCache?.rates ?? {}
+  }
+}

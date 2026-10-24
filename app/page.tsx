@@ -3,6 +3,7 @@ import Shell from '@/components/Shell'
 import { requireSession } from '@/lib/auth'
 import { computePlan, ensureFreshPlan } from '@/lib/plan'
 import { getStore } from '@/lib/store'
+import { purchaseRates } from '@/lib/zoho'
 
 export const dynamic = 'force-dynamic'
 
@@ -11,7 +12,12 @@ export default async function Page() {
   const store = getStore()
   await ensureFreshPlan(store)
 
-  const [pending, plan] = await Promise.all([store.listPOs(['pending']), computePlan(store)])
+  const rateTimeout = new Promise<Record<string, number>>((resolve) => setTimeout(() => resolve({}), 4000))
+  const [pending, plan, rates] = await Promise.all([
+    store.listPOs(['pending']),
+    computePlan(store),
+    Promise.race([purchaseRates(), rateTimeout]),
+  ])
   const urgency = (lines: (typeof pending)[number]['lines']) =>
     Math.min(...lines.map((l) => l.snapshot.coverWeeks / l.snapshot.minWeeks))
   pending.sort((a, b) => urgency(a.lines) - urgency(b.lines))
@@ -23,7 +29,7 @@ export default async function Page() {
 
   return (
     <Shell active="approvals" pending={pending.length} demo={store.mode === 'demo'}>
-      <Approvals pos={pending} held={held} />
+      <Approvals pos={pending} held={held} rates={rates} />
     </Shell>
   )
 }

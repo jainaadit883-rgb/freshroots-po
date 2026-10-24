@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/navigation'
 import { useEffect, useRef, useState } from 'react'
-import { percent, units, weeks } from '@/lib/format'
+import { orderValue, percent, rupees, units, weeks } from '@/lib/format'
 import type { PO, POLine } from '@/lib/types'
 import { plain, post, trimBrand } from './api'
 import Toast, { type ToastState } from './Toast'
@@ -43,7 +43,7 @@ function Stepper({ value, step, label, onChange }: { value: number; step: number
   )
 }
 
-export default function Approvals({ pos, held }: { pos: PO[]; held: Held[] }) {
+export default function Approvals({ pos, held, rates }: { pos: PO[]; held: Held[]; rates: Record<string, number> }) {
   const router = useRouter()
   const [qtys, setQtys] = useState<Record<string, number>>({})
   const [open, setOpen] = useState<string | null>(null)
@@ -65,10 +65,13 @@ export default function Approvals({ pos, held }: { pos: PO[]; held: Held[] }) {
 
   const qtyOf = (po: PO, l: POLine) => qtys[`${po.id}:${l.skuId}`] ?? l.qty
   const totalOf = (po: PO) => po.lines.reduce((sum, l) => sum + qtyOf(po, l), 0)
+  const valueOf = (po: PO) => orderValue(po.lines.map((l) => ({ skuId: l.skuId, qty: qtyOf(po, l) })), rates)
 
   const visible = pos.filter((p) => !gone.has(p.id))
   const active = visible.filter((p) => !leaving.has(p.id))
   const totalUnits = active.reduce((sum, p) => sum + totalOf(p), 0)
+  const values = active.map(valueOf)
+  const totalValue = values.length > 0 && values.every((v) => v !== null) ? values.reduce<number>((sum, v) => sum + (v ?? 0), 0) : null
   const lowCount = active.reduce((sum, p) => sum + p.lines.filter((l) => l.action === 'REORDER_NOW').length, 0)
 
   function leave(id: string) {
@@ -156,7 +159,7 @@ export default function Approvals({ pos, held }: { pos: PO[]; held: Held[] }) {
               {active.length} {active.length === 1 ? 'order' : 'orders'} to approve
             </h1>
             <p>
-              {units(totalUnits)} units
+              {units(totalUnits)} units{totalValue !== null && ` · ${rupees(totalValue)}`}
               {lowCount > 0 && ` · ${lowCount} ${lowCount === 1 ? 'product' : 'products'} running low`}
             </p>
           </>
@@ -181,7 +184,7 @@ export default function Approvals({ pos, held }: { pos: PO[]; held: Held[] }) {
                 </div>
                 <div className="total">
                   {units(totalOf(po))}
-                  <small>units</small>
+                  <small>units{valueOf(po) !== null && ` · ${rupees(valueOf(po) as number)}`}</small>
                 </div>
               </header>
 

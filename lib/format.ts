@@ -14,3 +14,16 @@ export function when(iso: string | null): string {
     minute: '2-digit',
   }).format(new Date(iso))
 }
+
+export const rupees = (n: number) => `₹${Math.round(n).toLocaleString('en-IN')}`
+
+// Total order value, or null when any line has no known purchase price.
+export function orderValue(lines: { skuId: string; qty: number }[], rates: Record<string, number>): number | null {
+  let total = 0
+  for (const l of lines) {
+    const rate = rates[l.skuId]
+    if (!rate || rate <= 0) return null
+    total += rate * l.qty
+  }
+  return total
+}
