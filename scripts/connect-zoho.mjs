@@ -30,6 +30,7 @@ function ask(question, hidden = false) {
     }
     rl.question(question, (answer) => {
       rl.close()
+      if (hidden) console.log(`  (${answer.trim().length} characters)`)
       resolve(answer.trim())
     })
   })
@@ -72,8 +73,8 @@ const tokenRes = await fetch(`https://${accountsHost}/oauth/v2/token`, {
 const token = await tokenRes.json().catch(() => ({}))
 if (!token.refresh_token) {
   console.error(`Zoho said: ${token.error ?? 'no refresh token returned'}.`)
-  if (token.error === 'invalid_client') {
-    console.error('Zoho did not recognise the Client ID or Client Secret. Copy each one in full and run this again.')
+  if (token.error === 'invalid_client' || token.error === 'invalid_client_secret') {
+    console.error('Zoho did not accept the Client ID or Client Secret. A Zoho client secret is 42 characters. Use the copy icons and run this again.')
   } else {
     console.error('The code lasts only a few minutes and works once. Generate a fresh one and run this again.')
   }
