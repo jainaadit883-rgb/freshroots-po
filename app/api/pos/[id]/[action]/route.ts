@@ -1,6 +1,8 @@
 import { guard, json } from '@/lib/api'
 import { getStore } from '@/lib/store'
-import { approvePO, receivePO, rejectPO, reopenPO } from '@/lib/workflow'
+import { approvePO, receivePO, rejectPO, reopenPO, retryZoho } from '@/lib/workflow'
+
+export const maxDuration = 30
 
 export async function POST(req: Request, ctx: { params: Promise<{ id: string; action: string }> }) {
   const blocked = await guard(req)
@@ -21,6 +23,9 @@ export async function POST(req: Request, ctx: { params: Promise<{ id: string; ac
         break
       case 'undo':
         outcome = await reopenPO(store, id)
+        break
+      case 'retry':
+        outcome = await retryZoho(store, id)
         break
       case 'receive':
         outcome = await receivePO(store, id)

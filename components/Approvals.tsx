@@ -83,28 +83,35 @@ export default function Approvals({ pos, held }: { pos: PO[]; held: Held[] }) {
     }, 350)
   }
 
-  async function run(po: PO, action: 'approve' | 'reject', body: unknown) {
+  async function run(po: PO, action: 'approve' | 'reject', body: unknown): Promise<PO | null> {
     setBusy(po.id)
     const res = await post(`/api/pos/${po.id}/${action}`, body)
     setBusy(null)
     if (res.status === 401) {
       router.push('/login')
-      return false
+      return null
     }
     if (!res.ok) {
       flash({ text: res.data.error ?? 'Something went wrong', tone: 'bad' })
       router.refresh()
-      return false
+      return null
     }
-    return true
+    return res.data.po as PO
   }
 
   async function approve(po: PO) {
     const total = totalOf(po)
     const qtysBody = Object.fromEntries(po.lines.map((l) => [l.skuId, qtyOf(po, l)]))
-    if (!(await run(po, 'approve', { qtys: qtysBody }))) return
+    const done = await run(po, 'approve', { qtys: qtysBody })
+    if (!done) return
     leave(po.id)
-    flash({ text: `Approved ${po.distributorName} · ${units(total)} units`, action: { label: 'Undo', run: () => undo(po, 'Moved back to approvals') } })
+    if (done.zohoStatus === 'failed') {
+      flash({ text: `Approved, but Zoho failed: ${(done.zohoError ?? 'unknown error').replace(/[.\s]+$/, '')}. Retry from History.`, tone: 'bad' }, 14000)
+    } else if (done.zohoStatus === 'sent') {
+      flash({ text: `Approved ${po.distributorName} · ${units(total)} units · sent to Zoho as a draft` }, 6000)
+    } else {
+      flash({ text: `Approved ${po.distributorName} · ${units(total)} units`, action: { label: 'Undo', run: () => undo(po, 'Moved back to approvals') } })
+    }
     router.refresh()
   }
 

@@ -26,6 +26,7 @@ function mapPO(r: Row): PO {
     receivedAt: r.received_at,
     zohoStatus: r.zoho_status,
     zohoRef: r.zoho_ref,
+    zohoError: r.zoho_error ?? null,
     lines: (r.po_lines ?? [])
       .map((l: Row) => ({
         skuId: l.sku_id,
@@ -169,6 +170,7 @@ export class SupabaseStore implements Store {
     if ('rejectReason' in patch) update.reject_reason = patch.rejectReason
     if ('zohoStatus' in patch) update.zoho_status = patch.zohoStatus
     if ('zohoRef' in patch) update.zoho_ref = patch.zohoRef
+    if ('zohoError' in patch) update.zoho_error = patch.zohoError
     const rows = must(
       await this.db.from('purchase_orders').update(update).eq('id', id).eq('status', from).select('id'),
       'transition',

@@ -2,6 +2,7 @@ import History from '@/components/History'
 import Shell from '@/components/Shell'
 import { requireSession } from '@/lib/auth'
 import { getStore } from '@/lib/store'
+import { zohoConfigured } from '@/lib/zoho'
 
 export const dynamic = 'force-dynamic'
 
@@ -18,7 +19,7 @@ export default async function HistoryPage() {
 
   return (
     <Shell active="history" pending={pending.length} demo={store.mode === 'demo'}>
-      <History pos={recent} />
+      <History pos={recent} zohoReady={zohoConfigured()} />
     </Shell>
   )
 }

@@ -1,6 +1,6 @@
 import type { Store } from './store/types'
 import type { PO } from './types'
-import { pushPO } from './zoho'
+import { pushPO, zohoConfigured } from './zoho'
 
 export const REJECT_REASONS = ['Enough stock', 'Supplier issue', 'Order later', 'Other'] as const
 const MAX_QTY = 1_000_000
@@ -13,6 +13,16 @@ async function load(store: Store, id: string): Promise<PO | Outcome> {
   return po ?? fail('Order not found', 404)
 }
 const isOutcome = (v: PO | Outcome): v is Outcome => 'ok' in v
+
+async function sendToZoho(store: Store, po: PO): Promise<void> {
+  const result = await pushPO(po)
+  if (result.status === 'not_connected') return
+  await store.transition(po.id, 'approved', 'approved', {
+    zohoStatus: result.status,
+    zohoRef: result.ref,
+    zohoError: result.error ?? null,
+  })
+}
 
 export async function approvePO(store: Store, id: string, qtys: Record<string, unknown>): Promise<Outcome> {
   const found = await load(store, id)
@@ -41,11 +51,7 @@ export async function approvePO(store: Store, id: string, qtys: Record<string, u
   })
   if (!moved) return fail('This order was just changed elsewhere. Refresh to see it.')
 
-  const approved = (await store.getPO(id))!
-  const zoho = await pushPO(approved)
-  if (zoho.status !== 'not_connected') {
-    await store.transition(id, 'approved', 'approved', { zohoStatus: zoho.status, zohoRef: zoho.ref })
-  }
+  await sendToZoho(store, (await store.getPO(id))!)
   return { ok: true, po: (await store.getPO(id))! }
 }
 
@@ -68,7 +74,7 @@ export async function reopenPO(store: Store, id: string): Promise<Outcome> {
   if (found.status !== 'approved' && found.status !== 'rejected') {
     return fail(`This order is ${found.status}, so it can't be undone`)
   }
-  if (found.status === 'approved' && found.zohoStatus !== 'not_connected') {
+  if (found.status === 'approved' && found.zohoStatus !== 'not_connected' && found.zohoStatus !== 'failed') {
     return fail('This order has already gone to Zoho')
   }
 
@@ -76,7 +82,7 @@ export async function reopenPO(store: Store, id: string): Promise<Outcome> {
   const pending = await store.listPOs(['pending'])
   if (pending.some((p) => p.distributorId === found.distributorId)) return fail(newer)
   try {
-    const moved = await store.transition(id, found.status, 'pending', { decidedAt: null, rejectReason: null })
+    const moved = await store.transition(id, found.status, 'pending', { decidedAt: null, rejectReason: null, zohoStatus: 'not_connected', zohoError: null })
     if (!moved) return fail('This order was just changed elsewhere. Refresh to see it.')
   } catch {
     return fail(newer)
@@ -88,5 +94,15 @@ export async function receivePO(store: Store, id: string): Promise<Outcome> {
   const found = await load(store, id)
   if (isOutcome(found)) return found
   if (!(await store.receivePO(id))) return fail(`This order is ${found.status}, so it can't be received`)
+  return { ok: true, po: (await store.getPO(id))! }
+}
+
+export async function retryZoho(store: Store, id: string): Promise<Outcome> {
+  const found = await load(store, id)
+  if (isOutcome(found)) return found
+  if (found.status !== 'approved') return fail(`This order is ${found.status}, so it can't be sent`)
+  if (found.zohoStatus === 'sent') return fail('This order is already in Zoho')
+  if (!zohoConfigured()) return fail('Zoho is not connected yet')
+  await sendToZoho(store, found)
   return { ok: true, po: (await store.getPO(id))! }
 }

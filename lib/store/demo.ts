@@ -65,6 +65,7 @@ export class DemoStore implements Store {
       receivedAt: null,
       zohoStatus: 'not_connected',
       zohoRef: null,
+      zohoError: null,
       lines: this.hydrate(lines),
     }
     this.s.pos.push(po)

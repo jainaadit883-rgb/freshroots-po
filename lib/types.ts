@@ -65,7 +65,7 @@ export interface Recommendation {
 }
 
 export type POStatus = 'pending' | 'approved' | 'rejected' | 'received'
-export type ZohoStatus = 'not_connected' | 'queued' | 'sent'
+export type ZohoStatus = 'not_connected' | 'queued' | 'sent' | 'failed'
 
 export interface LineSnapshot {
   onHand: number
@@ -114,6 +114,7 @@ export interface PO {
   receivedAt: string | null
   zohoStatus: ZohoStatus
   zohoRef: string | null
+  zohoError: string | null
   lines: POLine[]
 }
 
@@ -123,4 +124,5 @@ export interface StatusPatch {
   rejectReason?: string | null
   zohoStatus?: ZohoStatus
   zohoRef?: string | null
+  zohoError?: string | null
 }

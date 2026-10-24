@@ -37,7 +37,7 @@ With no Supabase variables set the app runs on the built-in sample data (`data/s
 ## Supabase
 
 1. Create a project.
-2. In the SQL editor run `supabase/migrations/0001_init.sql`, then `supabase/seed.sql`.
+2. In the SQL editor run `supabase/migrations/0001_init.sql`, `supabase/migrations/0002_zoho.sql`, then `supabase/seed.sql`.
 3. Set `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` (Project Settings → API) on Vercel.
 
 The app only talks to Supabase from the server. Row level security is on with no policies, so the public anon key can read nothing.
@@ -48,9 +48,30 @@ To refresh the seed after editing the CSVs in `data/seed`, run `npm run seed:bui
 
 Vercel does not put production sites to sleep. A free Supabase project does pause after about a week without activity. `vercel.json` runs `/api/cron/daily` every day at 06:00 IST, which refreshes the draft orders and queries the database. `/api/health` also queries the database, so an uptime monitor pointed at it works too.
 
-## Zoho
+## Zoho Inventory
 
-`lib/zoho.ts` exports `pushPO`, called right after an order is approved. Return `{ status: 'sent', ref }` once the real call exists and the order shows as sent in History.
+When you approve an order, the app creates it in Zoho Inventory as a **draft** purchase order with the same PO number, so it can be reviewed and issued in Zoho. If Zoho is down or something is missing, the approval still stands, History shows "Zoho failed" with the reason, and **Retry Zoho** sends it again. Retrying never creates a duplicate: if Zoho already has that PO number it is marked as sent.
+
+Matching rules (create these in Zoho first):
+
+- A **vendor** with exactly the distributor's name, for example `NutriFlow Distributors`.
+- An **item** whose SKU is the SKU ID (`SKU001`), or whose name is exactly the product name. The item's purchase rate is used as the price.
+
+Connect it:
+
+1. Open the Zoho API console for your region (India: api-console.zoho.in) and create a **Self Client**.
+2. Generate a code with the scopes `ZohoInventory.purchaseorders.CREATE,ZohoInventory.purchaseorders.READ,ZohoInventory.contacts.READ,ZohoInventory.items.READ`. The code expires after a few minutes.
+3. Exchange it for a refresh token (use `accounts.zoho.com` instead of `.in` outside India):
+
+   ```bash
+   curl -X POST https://accounts.zoho.in/oauth/v2/token -d grant_type=authorization_code -d client_id=CLIENT_ID -d client_secret=CLIENT_SECRET -d code=THE_CODE
+   ```
+
+4. Find the Organization ID in Zoho Inventory under Settings, then Organization Profile.
+5. Add `ZOHO_CLIENT_ID`, `ZOHO_CLIENT_SECRET`, `ZOHO_REFRESH_TOKEN`, `ZOHO_ORG_ID` and `ZOHO_DC` (`in`, `com`, `eu`, `au` or `ca`) in Vercel and redeploy.
+6. Run `supabase/migrations/0002_zoho.sql` once in the Supabase SQL editor.
+
+Orders approved before Zoho was connected get a **Send to Zoho** button in History.
 
 ## Environment
 
@@ -60,3 +81,4 @@ Vercel does not put production sites to sleep. A free Supabase project does paus
 | `SESSION_SECRET` | Signs the login cookie (24+ characters) |
 | `CRON_SECRET` | Lets Vercel Cron call `/api/cron/daily` |
 | `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY` | Database (optional until connected) |
+| `ZOHO_CLIENT_ID`, `ZOHO_CLIENT_SECRET`, `ZOHO_REFRESH_TOKEN`, `ZOHO_ORG_ID`, `ZOHO_DC` | Zoho Inventory (optional until connected) |

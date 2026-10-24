@@ -1,13 +1,18 @@
-import { beforeEach, describe, expect, it } from 'vitest'
+import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { computePlan, ensureFreshPlan, syncDrafts } from '../lib/plan'
 import { DemoStore } from '../lib/store/demo'
-import { approvePO, receivePO, rejectPO, reopenPO } from '../lib/workflow'
+import { approvePO, receivePO, rejectPO, reopenPO, retryZoho } from '../lib/workflow'
+
+const push = vi.hoisted(() => vi.fn(async (_po: unknown) => ({ status: 'not_connected', ref: null as string | null, error: undefined as string | undefined })))
+vi.mock('../lib/zoho', () => ({ pushPO: push, zohoConfigured: () => true }))
 
 const NOW = new Date('2026-10-24T06:00:00Z')
 let store: DemoStore
 
 beforeEach(() => {
   store = new DemoStore()
+  push.mockReset()
+  push.mockResolvedValue({ status: 'not_connected', ref: null, error: undefined })
 })
 
 const pendingBy = async (name: string) => (await store.listPOs(['pending'])).find((p) => p.distributorName === name)!
@@ -126,5 +131,50 @@ describe('reject, undo, receive', () => {
     const inv = (await store.loadPlanningData()).inventory.find((i) => i.skuId === 'SKU001')!
     expect(inv.onHand).toBe(900 + 750)
     expect((await receivePO(store, nutri.id)).ok).toBe(false)
+  })
+})
+
+describe('zoho', () => {
+  it('marks the order as sent when Zoho takes it, and then blocks undo', async () => {
+    push.mockResolvedValue({ status: 'sent', ref: 'Z-1', error: undefined })
+    await syncDrafts(store, NOW)
+    const meridian = await pendingBy('Meridian Trade Co.')
+    const res = await approvePO(store, meridian.id, {})
+    expect(res.ok && res.po.zohoStatus).toBe('sent')
+    expect(res.ok && res.po.zohoRef).toBe('Z-1')
+    expect(await reopenPO(store, meridian.id)).toMatchObject({ ok: false, status: 409 })
+  })
+
+  it('keeps the approval when Zoho fails, shows the error, and allows retry or undo', async () => {
+    push.mockResolvedValue({ status: 'failed', ref: null, error: 'Vendor "Meridian Trade Co." is not in Zoho Inventory.' })
+    await syncDrafts(store, NOW)
+    const meridian = await pendingBy('Meridian Trade Co.')
+    const res = await approvePO(store, meridian.id, {})
+    expect(res.ok && res.po.status).toBe('approved')
+    expect(res.ok && res.po.zohoStatus).toBe('failed')
+    expect(res.ok && res.po.zohoError).toContain('Meridian')
+
+    push.mockResolvedValue({ status: 'sent', ref: 'Z-2', error: undefined })
+    const retried = await retryZoho(store, meridian.id)
+    expect(retried.ok && retried.po.zohoStatus).toBe('sent')
+    expect(retried.ok && retried.po.zohoError).toBe(null)
+    expect(await retryZoho(store, meridian.id)).toMatchObject({ ok: false, status: 409 })
+  })
+
+  it('undo after a failed push resets the Zoho state', async () => {
+    push.mockResolvedValue({ status: 'failed', ref: null, error: 'nope' })
+    await syncDrafts(store, NOW)
+    const grain = await pendingBy('GrainPath Logistics')
+    await approvePO(store, grain.id, {})
+    const res = await reopenPO(store, grain.id)
+    expect(res.ok && res.po.status).toBe('pending')
+    expect(res.ok && res.po.zohoStatus).toBe('not_connected')
+    expect(res.ok && res.po.zohoError).toBe(null)
+  })
+
+  it('cannot retry an order that is not approved', async () => {
+    await syncDrafts(store, NOW)
+    const grain = await pendingBy('GrainPath Logistics')
+    expect(await retryZoho(store, grain.id)).toMatchObject({ ok: false, status: 409 })
   })
 })
