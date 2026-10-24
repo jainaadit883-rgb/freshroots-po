@@ -1,0 +1,1557 @@
+{
+ "distributors": [
+  {
+   "id": "DIST001",
+   "name": "NutriFlow Distributors",
+   "region": "Maharashtra",
+   "status": "Active"
+  },
+  {
+   "id": "DIST002",
+   "name": "GrainPath Logistics",
+   "region": "Maharashtra",
+   "status": "Active"
+  },
+  {
+   "id": "DIST003",
+   "name": "PeakSource Supply",
+   "region": "Karnataka",
+   "status": "Active"
+  },
+  {
+   "id": "DIST004",
+   "name": "Meridian Trade Co.",
+   "region": "Gujarat",
+   "status": "Active"
+  }
+ ],
+ "skus": [
+  {
+   "id": "SKU001",
+   "name": "Freshroots Mango Drink 200ml",
+   "category": "Beverage",
+   "perishability": "Low",
+   "standardQty": 500,
+   "uom": "Units",
+   "distributorId": "DIST001"
+  },
+  {
+   "id": "SKU002",
+   "name": "Freshroots Oats Cookies 150g",
+   "category": "Snack",
+   "perishability": "Low",
+   "standardQty": 200,
+   "uom": "Units",
+   "distributorId": "DIST001"
+  },
+  {
+   "id": "SKU003",
+   "name": "Freshroots Brown Rice 1kg",
+   "category": "Staple",
+   "perishability": "Low",
+   "standardQty": 300,
+   "uom": "Units",
+   "distributorId": "DIST002"
+  },
+  {
+   "id": "SKU004",
+   "name": "Freshroots Almond Milk 500ml",
+   "category": "Dairy Alt",
+   "perishability": "High",
+   "standardQty": 150,
+   "uom": "Units",
+   "distributorId": "DIST002"
+  },
+  {
+   "id": "SKU005",
+   "name": "Freshroots Mixed Nuts 100g",
+   "category": "Snack",
+   "perishability": "Low",
+   "standardQty": 150,
+   "uom": "Units",
+   "distributorId": "DIST003"
+  },
+  {
+   "id": "SKU006",
+   "name": "Freshroots Quinoa 500g",
+   "category": "Staple",
+   "perishability": "Low",
+   "standardQty": 100,
+   "uom": "Units",
+   "distributorId": "DIST003"
+  },
+  {
+   "id": "SKU007",
+   "name": "Freshroots Coconut Water 330ml",
+   "category": "Beverage",
+   "perishability": "High",
+   "standardQty": 400,
+   "uom": "Units",
+   "distributorId": "DIST001"
+  },
+  {
+   "id": "SKU008",
+   "name": "Freshroots Granola Bar 40g",
+   "category": "Snack",
+   "perishability": "Low",
+   "standardQty": 300,
+   "uom": "Units",
+   "distributorId": "DIST002"
+  },
+  {
+   "id": "SKU009",
+   "name": "Freshroots Chia Seeds 200g",
+   "category": "Staple",
+   "perishability": "Low",
+   "standardQty": 80,
+   "uom": "Units",
+   "distributorId": "DIST003"
+  },
+  {
+   "id": "SKU010",
+   "name": "Freshroots Apple Cider Vinegar 500ml",
+   "category": "Condiment",
+   "perishability": "Low",
+   "standardQty": 60,
+   "uom": "Units",
+   "distributorId": "DIST004"
+  },
+  {
+   "id": "SKU011",
+   "name": "Freshroots Multigrain Bread 400g",
+   "category": "Staple",
+   "perishability": "High",
+   "standardQty": 500,
+   "uom": "Units",
+   "distributorId": "DIST004"
+  },
+  {
+   "id": "SKU012",
+   "name": "Freshroots Herbal Tea 25 bags",
+   "category": "Beverage",
+   "perishability": "Low",
+   "standardQty": 150,
+   "uom": "Units",
+   "distributorId": "DIST004"
+  },
+  {
+   "id": "SKU013",
+   "name": "Freshroots Peanut Butter 300g",
+   "category": "Condiment",
+   "perishability": "Low",
+   "standardQty": 120,
+   "uom": "Units",
+   "distributorId": "DIST001"
+  },
+  {
+   "id": "SKU014",
+   "name": "Freshroots Dark Chocolate 80g",
+   "category": "Snack",
+   "perishability": "Low",
+   "standardQty": 200,
+   "uom": "Units",
+   "distributorId": "DIST002"
+  },
+  {
+   "id": "SKU015",
+   "name": "Freshroots Honey 500g",
+   "category": "Condiment",
+   "perishability": "Low",
+   "standardQty": 80,
+   "uom": "Units",
+   "distributorId": "DIST003"
+  }
+ ],
+ "sales": [
+  {
+   "skuId": "SKU001",
+   "week": "2026-W27",
+   "units": 194
+  },
+  {
+   "skuId": "SKU001",
+   "week": "2026-W28",
+   "units": 188
+  },
+  {
+   "skuId": "SKU001",
+   "week": "2026-W29",
+   "units": 204
+  },
+  {
+   "skuId": "SKU001",
+   "week": "2026-W30",
+   "units": 186
+  },
+  {
+   "skuId": "SKU001",
+   "week": "2026-W31",
+   "units": 201
+  },
+  {
+   "skuId": "SKU001",
+   "week": "2026-W32",
+   "units": 195
+  },
+  {
+   "skuId": "SKU001",
+   "week": "2026-W33",
+   "units": 185
+  },
+  {
+   "skuId": "SKU001",
+   "week": "2026-W34",
+   "units": 200
+  },
+  {
+   "skuId": "SKU001",
+   "week": "2026-W35",
+   "units": 185
+  },
+  {
+   "skuId": "SKU001",
+   "week": "2026-W36",
+   "units": 197
+  },
+  {
+   "skuId": "SKU001",
+   "week": "2026-W37",
+   "units": 186
+  },
+  {
+   "skuId": "SKU001",
+   "week": "2026-W38",
+   "units": 186
+  },
+  {
+   "skuId": "SKU001",
+   "week": "2026-W39",
+   "units": 261
+  },
+  {
+   "skuId": "SKU001",
+   "week": "2026-W40",
+   "units": 267
+  },
+  {
+   "skuId": "SKU001",
+   "week": "2026-W41",
+   "units": 257
+  },
+  {
+   "skuId": "SKU001",
+   "week": "2026-W42",
+   "units": 259
+  },
+  {
+   "skuId": "SKU002",
+   "week": "2026-W27",
+   "units": 86
+  },
+  {
+   "skuId": "SKU002",
+   "week": "2026-W28",
+   "units": 91
+  },
+  {
+   "skuId": "SKU002",
+   "week": "2026-W29",
+   "units": 86
+  },
+  {
+   "skuId": "SKU002",
+   "week": "2026-W30",
+   "units": 83
+  },
+  {
+   "skuId": "SKU002",
+   "week": "2026-W31",
+   "units": 91
+  },
+  {
+   "skuId": "SKU002",
+   "week": "2026-W32",
+   "units": 78
+  },
+  {
+   "skuId": "SKU002",
+   "week": "2026-W33",
+   "units": 89
+  },
+  {
+   "skuId": "SKU002",
+   "week": "2026-W34",
+   "units": 82
+  },
+  {
+   "skuId": "SKU002",
+   "week": "2026-W35",
+   "units": 80
+  },
+  {
+   "skuId": "SKU002",
+   "week": "2026-W36",
+   "units": 79
+  },
+  {
+   "skuId": "SKU002",
+   "week": "2026-W37",
+   "units": 82
+  },
+  {
+   "skuId": "SKU002",
+   "week": "2026-W38",
+   "units": 89
+  },
+  {
+   "skuId": "SKU002",
+   "week": "2026-W39",
+   "units": 80
+  },
+  {
+   "skuId": "SKU002",
+   "week": "2026-W40",
+   "units": 86
+  },
+  {
+   "skuId": "SKU002",
+   "week": "2026-W41",
+   "units": 86
+  },
+  {
+   "skuId": "SKU002",
+   "week": "2026-W42",
+   "units": 83
+  },
+  {
+   "skuId": "SKU003",
+   "week": "2026-W27",
+   "units": 151
+  },
+  {
+   "skuId": "SKU003",
+   "week": "2026-W28",
+   "units": 139
+  },
+  {
+   "skuId": "SKU003",
+   "week": "2026-W29",
+   "units": 139
+  },
+  {
+   "skuId": "SKU003",
+   "week": "2026-W30",
+   "units": 142
+  },
+  {
+   "skuId": "SKU003",
+   "week": "2026-W31",
+   "units": 154
+  },
+  {
+   "skuId": "SKU003",
+   "week": "2026-W32",
+   "units": 148
+  },
+  {
+   "skuId": "SKU003",
+   "week": "2026-W33",
+   "units": 145
+  },
+  {
+   "skuId": "SKU003",
+   "week": "2026-W34",
+   "units": 152
+  },
+  {
+   "skuId": "SKU003",
+   "week": "2026-W35",
+   "units": 148
+  },
+  {
+   "skuId": "SKU003",
+   "week": "2026-W36",
+   "units": 145
+  },
+  {
+   "skuId": "SKU003",
+   "week": "2026-W37",
+   "units": 157
+  },
+  {
+   "skuId": "SKU003",
+   "week": "2026-W38",
+   "units": 154
+  },
+  {
+   "skuId": "SKU003",
+   "week": "2026-W39",
+   "units": 143
+  },
+  {
+   "skuId": "SKU003",
+   "week": "2026-W40",
+   "units": 151
+  },
+  {
+   "skuId": "SKU003",
+   "week": "2026-W41",
+   "units": 150
+  },
+  {
+   "skuId": "SKU003",
+   "week": "2026-W42",
+   "units": 159
+  },
+  {
+   "skuId": "SKU004",
+   "week": "2026-W27",
+   "units": 82
+  },
+  {
+   "skuId": "SKU004",
+   "week": "2026-W28",
+   "units": 77
+  },
+  {
+   "skuId": "SKU004",
+   "week": "2026-W29",
+   "units": 86
+  },
+  {
+   "skuId": "SKU004",
+   "week": "2026-W30",
+   "units": 75
+  },
+  {
+   "skuId": "SKU004",
+   "week": "2026-W31",
+   "units": 78
+  },
+  {
+   "skuId": "SKU004",
+   "week": "2026-W32",
+   "units": 83
+  },
+  {
+   "skuId": "SKU004",
+   "week": "2026-W33",
+   "units": 75
+  },
+  {
+   "skuId": "SKU004",
+   "week": "2026-W34",
+   "units": 79
+  },
+  {
+   "skuId": "SKU004",
+   "week": "2026-W35",
+   "units": 74
+  },
+  {
+   "skuId": "SKU004",
+   "week": "2026-W36",
+   "units": 82
+  },
+  {
+   "skuId": "SKU004",
+   "week": "2026-W37",
+   "units": 83
+  },
+  {
+   "skuId": "SKU004",
+   "week": "2026-W38",
+   "units": 80
+  },
+  {
+   "skuId": "SKU004",
+   "week": "2026-W39",
+   "units": 84
+  },
+  {
+   "skuId": "SKU004",
+   "week": "2026-W40",
+   "units": 77
+  },
+  {
+   "skuId": "SKU004",
+   "week": "2026-W41",
+   "units": 82
+  },
+  {
+   "skuId": "SKU004",
+   "week": "2026-W42",
+   "units": 81
+  },
+  {
+   "skuId": "SKU005",
+   "week": "2026-W27",
+   "units": 60
+  },
+  {
+   "skuId": "SKU005",
+   "week": "2026-W28",
+   "units": 59
+  },
+  {
+   "skuId": "SKU005",
+   "week": "2026-W29",
+   "units": 63
+  },
+  {
+   "skuId": "SKU005",
+   "week": "2026-W30",
+   "units": 64
+  },
+  {
+   "skuId": "SKU005",
+   "week": "2026-W31",
+   "units": 59
+  },
+  {
+   "skuId": "SKU005",
+   "week": "2026-W32",
+   "units": 61
+  },
+  {
+   "skuId": "SKU005",
+   "week": "2026-W33",
+   "units": 55
+  },
+  {
+   "skuId": "SKU005",
+   "week": "2026-W34",
+   "units": 61
+  },
+  {
+   "skuId": "SKU005",
+   "week": "2026-W35",
+   "units": 61
+  },
+  {
+   "skuId": "SKU005",
+   "week": "2026-W36",
+   "units": 64
+  },
+  {
+   "skuId": "SKU005",
+   "week": "2026-W37",
+   "units": 63
+  },
+  {
+   "skuId": "SKU005",
+   "week": "2026-W38",
+   "units": 57
+  },
+  {
+   "skuId": "SKU005",
+   "week": "2026-W39",
+   "units": 58
+  },
+  {
+   "skuId": "SKU005",
+   "week": "2026-W40",
+   "units": 61
+  },
+  {
+   "skuId": "SKU005",
+   "week": "2026-W41",
+   "units": 55
+  },
+  {
+   "skuId": "SKU005",
+   "week": "2026-W42",
+   "units": 59
+  },
+  {
+   "skuId": "SKU006",
+   "week": "2026-W27",
+   "units": 37
+  },
+  {
+   "skuId": "SKU006",
+   "week": "2026-W28",
+   "units": 37
+  },
+  {
+   "skuId": "SKU006",
+   "week": "2026-W29",
+   "units": 37
+  },
+  {
+   "skuId": "SKU006",
+   "week": "2026-W30",
+   "units": 41
+  },
+  {
+   "skuId": "SKU006",
+   "week": "2026-W31",
+   "units": 37
+  },
+  {
+   "skuId": "SKU006",
+   "week": "2026-W32",
+   "units": 38
+  },
+  {
+   "skuId": "SKU006",
+   "week": "2026-W33",
+   "units": 39
+  },
+  {
+   "skuId": "SKU006",
+   "week": "2026-W34",
+   "units": 42
+  },
+  {
+   "skuId": "SKU006",
+   "week": "2026-W35",
+   "units": 37
+  },
+  {
+   "skuId": "SKU006",
+   "week": "2026-W36",
+   "units": 39
+  },
+  {
+   "skuId": "SKU006",
+   "week": "2026-W37",
+   "units": 40
+  },
+  {
+   "skuId": "SKU006",
+   "week": "2026-W38",
+   "units": 42
+  },
+  {
+   "skuId": "SKU006",
+   "week": "2026-W39",
+   "units": 42
+  },
+  {
+   "skuId": "SKU006",
+   "week": "2026-W40",
+   "units": 42
+  },
+  {
+   "skuId": "SKU006",
+   "week": "2026-W41",
+   "units": 38
+  },
+  {
+   "skuId": "SKU006",
+   "week": "2026-W42",
+   "units": 39
+  },
+  {
+   "skuId": "SKU007",
+   "week": "2026-W27",
+   "units": 117
+  },
+  {
+   "skuId": "SKU007",
+   "week": "2026-W28",
+   "units": 127
+  },
+  {
+   "skuId": "SKU007",
+   "week": "2026-W29",
+   "units": 128
+  },
+  {
+   "skuId": "SKU007",
+   "week": "2026-W30",
+   "units": 113
+  },
+  {
+   "skuId": "SKU007",
+   "week": "2026-W31",
+   "units": 113
+  },
+  {
+   "skuId": "SKU007",
+   "week": "2026-W32",
+   "units": 114
+  },
+  {
+   "skuId": "SKU007",
+   "week": "2026-W33",
+   "units": 114
+  },
+  {
+   "skuId": "SKU007",
+   "week": "2026-W34",
+   "units": 119
+  },
+  {
+   "skuId": "SKU007",
+   "week": "2026-W35",
+   "units": 121
+  },
+  {
+   "skuId": "SKU007",
+   "week": "2026-W36",
+   "units": 115
+  },
+  {
+   "skuId": "SKU007",
+   "week": "2026-W37",
+   "units": 110
+  },
+  {
+   "skuId": "SKU007",
+   "week": "2026-W38",
+   "units": 118
+  },
+  {
+   "skuId": "SKU007",
+   "week": "2026-W39",
+   "units": 131
+  },
+  {
+   "skuId": "SKU007",
+   "week": "2026-W40",
+   "units": 133
+  },
+  {
+   "skuId": "SKU007",
+   "week": "2026-W41",
+   "units": 136
+  },
+  {
+   "skuId": "SKU007",
+   "week": "2026-W42",
+   "units": 134
+  },
+  {
+   "skuId": "SKU008",
+   "week": "2026-W27",
+   "units": 110
+  },
+  {
+   "skuId": "SKU008",
+   "week": "2026-W28",
+   "units": 112
+  },
+  {
+   "skuId": "SKU008",
+   "week": "2026-W29",
+   "units": 113
+  },
+  {
+   "skuId": "SKU008",
+   "week": "2026-W30",
+   "units": 102
+  },
+  {
+   "skuId": "SKU008",
+   "week": "2026-W31",
+   "units": 117
+  },
+  {
+   "skuId": "SKU008",
+   "week": "2026-W32",
+   "units": 114
+  },
+  {
+   "skuId": "SKU008",
+   "week": "2026-W33",
+   "units": 116
+  },
+  {
+   "skuId": "SKU008",
+   "week": "2026-W34",
+   "units": 115
+  },
+  {
+   "skuId": "SKU008",
+   "week": "2026-W35",
+   "units": 108
+  },
+  {
+   "skuId": "SKU008",
+   "week": "2026-W36",
+   "units": 108
+  },
+  {
+   "skuId": "SKU008",
+   "week": "2026-W37",
+   "units": 103
+  },
+  {
+   "skuId": "SKU008",
+   "week": "2026-W38",
+   "units": 112
+  },
+  {
+   "skuId": "SKU008",
+   "week": "2026-W39",
+   "units": 102
+  },
+  {
+   "skuId": "SKU008",
+   "week": "2026-W40",
+   "units": 102
+  },
+  {
+   "skuId": "SKU008",
+   "week": "2026-W41",
+   "units": 104
+  },
+  {
+   "skuId": "SKU008",
+   "week": "2026-W42",
+   "units": 104
+  },
+  {
+   "skuId": "SKU009",
+   "week": "2026-W27",
+   "units": 34
+  },
+  {
+   "skuId": "SKU009",
+   "week": "2026-W28",
+   "units": 32
+  },
+  {
+   "skuId": "SKU009",
+   "week": "2026-W29",
+   "units": 32
+  },
+  {
+   "skuId": "SKU009",
+   "week": "2026-W30",
+   "units": 33
+  },
+  {
+   "skuId": "SKU009",
+   "week": "2026-W31",
+   "units": 32
+  },
+  {
+   "skuId": "SKU009",
+   "week": "2026-W32",
+   "units": 34
+  },
+  {
+   "skuId": "SKU009",
+   "week": "2026-W33",
+   "units": 32
+  },
+  {
+   "skuId": "SKU009",
+   "week": "2026-W34",
+   "units": 37
+  },
+  {
+   "skuId": "SKU009",
+   "week": "2026-W35",
+   "units": 35
+  },
+  {
+   "skuId": "SKU009",
+   "week": "2026-W36",
+   "units": 33
+  },
+  {
+   "skuId": "SKU009",
+   "week": "2026-W37",
+   "units": 33
+  },
+  {
+   "skuId": "SKU009",
+   "week": "2026-W38",
+   "units": 34
+  },
+  {
+   "skuId": "SKU009",
+   "week": "2026-W39",
+   "units": 34
+  },
+  {
+   "skuId": "SKU009",
+   "week": "2026-W40",
+   "units": 32
+  },
+  {
+   "skuId": "SKU009",
+   "week": "2026-W41",
+   "units": 36
+  },
+  {
+   "skuId": "SKU009",
+   "week": "2026-W42",
+   "units": 37
+  },
+  {
+   "skuId": "SKU010",
+   "week": "2026-W27",
+   "units": 24
+  },
+  {
+   "skuId": "SKU010",
+   "week": "2026-W28",
+   "units": 24
+  },
+  {
+   "skuId": "SKU010",
+   "week": "2026-W29",
+   "units": 23
+  },
+  {
+   "skuId": "SKU010",
+   "week": "2026-W30",
+   "units": 23
+  },
+  {
+   "skuId": "SKU010",
+   "week": "2026-W31",
+   "units": 24
+  },
+  {
+   "skuId": "SKU010",
+   "week": "2026-W32",
+   "units": 24
+  },
+  {
+   "skuId": "SKU010",
+   "week": "2026-W33",
+   "units": 26
+  },
+  {
+   "skuId": "SKU010",
+   "week": "2026-W34",
+   "units": 23
+  },
+  {
+   "skuId": "SKU010",
+   "week": "2026-W35",
+   "units": 23
+  },
+  {
+   "skuId": "SKU010",
+   "week": "2026-W36",
+   "units": 26
+  },
+  {
+   "skuId": "SKU010",
+   "week": "2026-W37",
+   "units": 25
+  },
+  {
+   "skuId": "SKU010",
+   "week": "2026-W38",
+   "units": 23
+  },
+  {
+   "skuId": "SKU010",
+   "week": "2026-W39",
+   "units": 25
+  },
+  {
+   "skuId": "SKU010",
+   "week": "2026-W40",
+   "units": 23
+  },
+  {
+   "skuId": "SKU010",
+   "week": "2026-W41",
+   "units": 25
+  },
+  {
+   "skuId": "SKU010",
+   "week": "2026-W42",
+   "units": 26
+  },
+  {
+   "skuId": "SKU011",
+   "week": "2026-W27",
+   "units": 211
+  },
+  {
+   "skuId": "SKU011",
+   "week": "2026-W28",
+   "units": 206
+  },
+  {
+   "skuId": "SKU011",
+   "week": "2026-W29",
+   "units": 192
+  },
+  {
+   "skuId": "SKU011",
+   "week": "2026-W30",
+   "units": 195
+  },
+  {
+   "skuId": "SKU011",
+   "week": "2026-W31",
+   "units": 189
+  },
+  {
+   "skuId": "SKU011",
+   "week": "2026-W32",
+   "units": 208
+  },
+  {
+   "skuId": "SKU011",
+   "week": "2026-W33",
+   "units": 201
+  },
+  {
+   "skuId": "SKU011",
+   "week": "2026-W34",
+   "units": 208
+  },
+  {
+   "skuId": "SKU011",
+   "week": "2026-W35",
+   "units": 194
+  },
+  {
+   "skuId": "SKU011",
+   "week": "2026-W36",
+   "units": 191
+  },
+  {
+   "skuId": "SKU011",
+   "week": "2026-W37",
+   "units": 209
+  },
+  {
+   "skuId": "SKU011",
+   "week": "2026-W38",
+   "units": 215
+  },
+  {
+   "skuId": "SKU011",
+   "week": "2026-W39",
+   "units": 211
+  },
+  {
+   "skuId": "SKU011",
+   "week": "2026-W40",
+   "units": 209
+  },
+  {
+   "skuId": "SKU011",
+   "week": "2026-W41",
+   "units": 210
+  },
+  {
+   "skuId": "SKU011",
+   "week": "2026-W42",
+   "units": 207
+  },
+  {
+   "skuId": "SKU012",
+   "week": "2026-W27",
+   "units": 52
+  },
+  {
+   "skuId": "SKU012",
+   "week": "2026-W28",
+   "units": 55
+  },
+  {
+   "skuId": "SKU012",
+   "week": "2026-W29",
+   "units": 53
+  },
+  {
+   "skuId": "SKU012",
+   "week": "2026-W30",
+   "units": 50
+  },
+  {
+   "skuId": "SKU012",
+   "week": "2026-W31",
+   "units": 50
+  },
+  {
+   "skuId": "SKU012",
+   "week": "2026-W32",
+   "units": 53
+  },
+  {
+   "skuId": "SKU012",
+   "week": "2026-W33",
+   "units": 52
+  },
+  {
+   "skuId": "SKU012",
+   "week": "2026-W34",
+   "units": 56
+  },
+  {
+   "skuId": "SKU012",
+   "week": "2026-W35",
+   "units": 59
+  },
+  {
+   "skuId": "SKU012",
+   "week": "2026-W36",
+   "units": 54
+  },
+  {
+   "skuId": "SKU012",
+   "week": "2026-W37",
+   "units": 58
+  },
+  {
+   "skuId": "SKU012",
+   "week": "2026-W38",
+   "units": 59
+  },
+  {
+   "skuId": "SKU012",
+   "week": "2026-W39",
+   "units": 62
+  },
+  {
+   "skuId": "SKU012",
+   "week": "2026-W40",
+   "units": 60
+  },
+  {
+   "skuId": "SKU012",
+   "week": "2026-W41",
+   "units": 59
+  },
+  {
+   "skuId": "SKU012",
+   "week": "2026-W42",
+   "units": 59
+  },
+  {
+   "skuId": "SKU013",
+   "week": "2026-W27",
+   "units": 42
+  },
+  {
+   "skuId": "SKU013",
+   "week": "2026-W28",
+   "units": 42
+  },
+  {
+   "skuId": "SKU013",
+   "week": "2026-W29",
+   "units": 45
+  },
+  {
+   "skuId": "SKU013",
+   "week": "2026-W30",
+   "units": 47
+  },
+  {
+   "skuId": "SKU013",
+   "week": "2026-W31",
+   "units": 47
+  },
+  {
+   "skuId": "SKU013",
+   "week": "2026-W32",
+   "units": 44
+  },
+  {
+   "skuId": "SKU013",
+   "week": "2026-W33",
+   "units": 46
+  },
+  {
+   "skuId": "SKU013",
+   "week": "2026-W34",
+   "units": 47
+  },
+  {
+   "skuId": "SKU013",
+   "week": "2026-W35",
+   "units": 42
+  },
+  {
+   "skuId": "SKU013",
+   "week": "2026-W36",
+   "units": 46
+  },
+  {
+   "skuId": "SKU013",
+   "week": "2026-W37",
+   "units": 47
+  },
+  {
+   "skuId": "SKU013",
+   "week": "2026-W38",
+   "units": 47
+  },
+  {
+   "skuId": "SKU013",
+   "week": "2026-W39",
+   "units": 46
+  },
+  {
+   "skuId": "SKU013",
+   "week": "2026-W40",
+   "units": 44
+  },
+  {
+   "skuId": "SKU013",
+   "week": "2026-W41",
+   "units": 42
+  },
+  {
+   "skuId": "SKU013",
+   "week": "2026-W42",
+   "units": 47
+  },
+  {
+   "skuId": "SKU014",
+   "week": "2026-W27",
+   "units": 68
+  },
+  {
+   "skuId": "SKU014",
+   "week": "2026-W28",
+   "units": 73
+  },
+  {
+   "skuId": "SKU014",
+   "week": "2026-W29",
+   "units": 75
+  },
+  {
+   "skuId": "SKU014",
+   "week": "2026-W30",
+   "units": 68
+  },
+  {
+   "skuId": "SKU014",
+   "week": "2026-W31",
+   "units": 68
+  },
+  {
+   "skuId": "SKU014",
+   "week": "2026-W32",
+   "units": 75
+  },
+  {
+   "skuId": "SKU014",
+   "week": "2026-W33",
+   "units": 72
+  },
+  {
+   "skuId": "SKU014",
+   "week": "2026-W34",
+   "units": 66
+  },
+  {
+   "skuId": "SKU014",
+   "week": "2026-W35",
+   "units": 65
+  },
+  {
+   "skuId": "SKU014",
+   "week": "2026-W36",
+   "units": 66
+  },
+  {
+   "skuId": "SKU014",
+   "week": "2026-W37",
+   "units": 74
+  },
+  {
+   "skuId": "SKU014",
+   "week": "2026-W38",
+   "units": 73
+  },
+  {
+   "skuId": "SKU014",
+   "week": "2026-W39",
+   "units": 75
+  },
+  {
+   "skuId": "SKU014",
+   "week": "2026-W40",
+   "units": 78
+  },
+  {
+   "skuId": "SKU014",
+   "week": "2026-W41",
+   "units": 79
+  },
+  {
+   "skuId": "SKU014",
+   "week": "2026-W42",
+   "units": 78
+  },
+  {
+   "skuId": "SKU015",
+   "week": "2026-W27",
+   "units": 29
+  },
+  {
+   "skuId": "SKU015",
+   "week": "2026-W28",
+   "units": 30
+  },
+  {
+   "skuId": "SKU015",
+   "week": "2026-W29",
+   "units": 28
+  },
+  {
+   "skuId": "SKU015",
+   "week": "2026-W30",
+   "units": 27
+  },
+  {
+   "skuId": "SKU015",
+   "week": "2026-W31",
+   "units": 32
+  },
+  {
+   "skuId": "SKU015",
+   "week": "2026-W32",
+   "units": 30
+  },
+  {
+   "skuId": "SKU015",
+   "week": "2026-W33",
+   "units": 30
+  },
+  {
+   "skuId": "SKU015",
+   "week": "2026-W34",
+   "units": 32
+  },
+  {
+   "skuId": "SKU015",
+   "week": "2026-W35",
+   "units": 29
+  },
+  {
+   "skuId": "SKU015",
+   "week": "2026-W36",
+   "units": 31
+  },
+  {
+   "skuId": "SKU015",
+   "week": "2026-W37",
+   "units": 31
+  },
+  {
+   "skuId": "SKU015",
+   "week": "2026-W38",
+   "units": 28
+  },
+  {
+   "skuId": "SKU015",
+   "week": "2026-W39",
+   "units": 28
+  },
+  {
+   "skuId": "SKU015",
+   "week": "2026-W40",
+   "units": 29
+  },
+  {
+   "skuId": "SKU015",
+   "week": "2026-W41",
+   "units": 28
+  },
+  {
+   "skuId": "SKU015",
+   "week": "2026-W42",
+   "units": 30
+  }
+ ],
+ "inventory": [
+  {
+   "skuId": "SKU001",
+   "location": "Pune Central Warehouse",
+   "onHand": 900,
+   "asOf": "2026-10-19"
+  },
+  {
+   "skuId": "SKU002",
+   "location": "Pune Central Warehouse",
+   "onHand": 1200,
+   "asOf": "2026-10-19"
+  },
+  {
+   "skuId": "SKU003",
+   "location": "Pune Central Warehouse",
+   "onHand": 820,
+   "asOf": "2026-10-19"
+  },
+  {
+   "skuId": "SKU004",
+   "location": "Pune Central Warehouse",
+   "onHand": 180,
+   "asOf": "2026-10-19"
+  },
+  {
+   "skuId": "SKU005",
+   "location": "Pune Central Warehouse",
+   "onHand": 600,
+   "asOf": "2026-10-19"
+  },
+  {
+   "skuId": "SKU006",
+   "location": "Pune Central Warehouse",
+   "onHand": 1100,
+   "asOf": "2026-10-19"
+  },
+  {
+   "skuId": "SKU007",
+   "location": "Pune Central Warehouse",
+   "onHand": 620,
+   "asOf": "2026-10-19"
+  },
+  {
+   "skuId": "SKU008",
+   "location": "Pune Central Warehouse",
+   "onHand": 950,
+   "asOf": "2026-10-19"
+  },
+  {
+   "skuId": "SKU009",
+   "location": "Pune Central Warehouse",
+   "onHand": 400,
+   "asOf": "2026-10-19"
+  },
+  {
+   "skuId": "SKU010",
+   "location": "Pune Central Warehouse",
+   "onHand": 260,
+   "asOf": "2026-10-19"
+  },
+  {
+   "skuId": "SKU011",
+   "location": "Pune Central Warehouse",
+   "onHand": 460,
+   "asOf": "2026-10-19"
+  },
+  {
+   "skuId": "SKU012",
+   "location": "Pune Central Warehouse",
+   "onHand": 480,
+   "asOf": "2026-10-19"
+  },
+  {
+   "skuId": "SKU013",
+   "location": "Pune Central Warehouse",
+   "onHand": 180,
+   "asOf": "2026-10-19"
+  },
+  {
+   "skuId": "SKU014",
+   "location": "Pune Central Warehouse",
+   "onHand": 620,
+   "asOf": "2026-10-19"
+  },
+  {
+   "skuId": "SKU015",
+   "location": "Pune Central Warehouse",
+   "onHand": 360,
+   "asOf": "2026-10-19"
+  }
+ ],
+ "calendar": [
+  {
+   "yearMonth": "2025-01",
+   "isFestival": false
+  },
+  {
+   "yearMonth": "2025-02",
+   "isFestival": false
+  },
+  {
+   "yearMonth": "2025-03",
+   "isFestival": true
+  },
+  {
+   "yearMonth": "2025-04",
+   "isFestival": false
+  },
+  {
+   "yearMonth": "2025-05",
+   "isFestival": false
+  },
+  {
+   "yearMonth": "2025-06",
+   "isFestival": false
+  },
+  {
+   "yearMonth": "2025-07",
+   "isFestival": false
+  },
+  {
+   "yearMonth": "2025-08",
+   "isFestival": false
+  },
+  {
+   "yearMonth": "2025-09",
+   "isFestival": false
+  },
+  {
+   "yearMonth": "2025-10",
+   "isFestival": true
+  },
+  {
+   "yearMonth": "2025-11",
+   "isFestival": true
+  },
+  {
+   "yearMonth": "2025-12",
+   "isFestival": false
+  },
+  {
+   "yearMonth": "2026-01",
+   "isFestival": false
+  },
+  {
+   "yearMonth": "2026-02",
+   "isFestival": false
+  },
+  {
+   "yearMonth": "2026-03",
+   "isFestival": true
+  },
+  {
+   "yearMonth": "2026-04",
+   "isFestival": false
+  },
+  {
+   "yearMonth": "2026-05",
+   "isFestival": false
+  },
+  {
+   "yearMonth": "2026-06",
+   "isFestival": false
+  },
+  {
+   "yearMonth": "2026-07",
+   "isFestival": false
+  },
+  {
+   "yearMonth": "2026-08",
+   "isFestival": false
+  },
+  {
+   "yearMonth": "2026-09",
+   "isFestival": false
+  },
+  {
+   "yearMonth": "2026-10",
+   "isFestival": true
+  },
+  {
+   "yearMonth": "2026-11",
+   "isFestival": true
+  },
+  {
+   "yearMonth": "2026-12",
+   "isFestival": false
+  }
+ ]
+}
