@@ -61,14 +61,9 @@ Connect it:
 
 1. Open the Zoho API console for your region (India: api-console.zoho.in) and create a **Self Client**.
 2. Generate a code with the scopes `ZohoInventory.purchaseorders.CREATE,ZohoInventory.purchaseorders.READ,ZohoInventory.contacts.READ,ZohoInventory.items.READ`. The code expires after a few minutes.
-3. Exchange it for a refresh token (use `accounts.zoho.com` instead of `.in` outside India):
-
-   ```bash
-   curl -X POST https://accounts.zoho.in/oauth/v2/token -d grant_type=authorization_code -d client_id=CLIENT_ID -d client_secret=CLIENT_SECRET -d code=THE_CODE
-   ```
-
+3. Run `node scripts/connect-zoho.mjs`. It asks for the Client ID, Client Secret, Organization ID and the code, checks them against Zoho Inventory, and saves all five Zoho settings in Vercel. Secrets are typed in the terminal and never printed.
 4. Find the Organization ID in Zoho Inventory under Settings, then Organization Profile.
-5. Add `ZOHO_CLIENT_ID`, `ZOHO_CLIENT_SECRET`, `ZOHO_REFRESH_TOKEN`, `ZOHO_ORG_ID` and `ZOHO_DC` (`in`, `com`, `eu`, `au` or `ca`) in Vercel and redeploy.
+5. Redeploy.
 6. Run `supabase/migrations/0002_zoho.sql` once in the Supabase SQL editor.
 
 Orders approved before Zoho was connected get a **Send to Zoho** button in History.
