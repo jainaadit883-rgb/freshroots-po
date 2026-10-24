@@ -1,16 +1,16 @@
-Item Name,SKU,Unit,Category,Selling Price,Purchase Rate
-"Freshroots Mango Drink 200ml","SKU001","pcs","Beverage",0,
-"Freshroots Oats Cookies 150g","SKU002","pcs","Snack",0,
-"Freshroots Brown Rice 1kg","SKU003","pcs","Staple",0,
-"Freshroots Almond Milk 500ml","SKU004","pcs","Dairy Alt",0,
-"Freshroots Mixed Nuts 100g","SKU005","pcs","Snack",0,
-"Freshroots Quinoa 500g","SKU006","pcs","Staple",0,
-"Freshroots Coconut Water 330ml","SKU007","pcs","Beverage",0,
-"Freshroots Granola Bar 40g","SKU008","pcs","Snack",0,
-"Freshroots Chia Seeds 200g","SKU009","pcs","Staple",0,
-"Freshroots Apple Cider Vinegar 500ml","SKU010","pcs","Condiment",0,
-"Freshroots Multigrain Bread 400g","SKU011","pcs","Staple",0,
-"Freshroots Herbal Tea 25 bags","SKU012","pcs","Beverage",0,
-"Freshroots Peanut Butter 300g","SKU013","pcs","Condiment",0,
-"Freshroots Dark Chocolate 80g","SKU014","pcs","Snack",0,
-"Freshroots Honey 500g","SKU015","pcs","Condiment",0,
+Item Name,SKU,Unit,Category,Selling Price,Purchase Rate,Sellable,Purchasable
+"Freshroots Mango Drink 200ml","SKU001","pcs","Beverage",0,0,true,true
+"Freshroots Oats Cookies 150g","SKU002","pcs","Snack",0,0,true,true
+"Freshroots Brown Rice 1kg","SKU003","pcs","Staple",0,0,true,true
+"Freshroots Almond Milk 500ml","SKU004","pcs","Dairy Alt",0,0,true,true
+"Freshroots Mixed Nuts 100g","SKU005","pcs","Snack",0,0,true,true
+"Freshroots Quinoa 500g","SKU006","pcs","Staple",0,0,true,true
+"Freshroots Coconut Water 330ml","SKU007","pcs","Beverage",0,0,true,true
+"Freshroots Granola Bar 40g","SKU008","pcs","Snack",0,0,true,true
+"Freshroots Chia Seeds 200g","SKU009","pcs","Staple",0,0,true,true
+"Freshroots Apple Cider Vinegar 500ml","SKU010","pcs","Condiment",0,0,true,true
+"Freshroots Multigrain Bread 400g","SKU011","pcs","Staple",0,0,true,true
+"Freshroots Herbal Tea 25 bags","SKU012","pcs","Beverage",0,0,true,true
+"Freshroots Peanut Butter 300g","SKU013","pcs","Condiment",0,0,true,true
+"Freshroots Dark Chocolate 80g","SKU014","pcs","Snack",0,0,true,true
+"Freshroots Honey 500g","SKU015","pcs","Condiment",0,0,true,true
